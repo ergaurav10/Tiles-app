@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+.rotate-tile-0 {
+  transform: rotate(0deg);
+}
+.rotate-tile-90 {
+  transform: rotate(90deg);
+}
+.rotate-tile-180 {
+  transform: rotate(180deg);
+}
+.rotate-tile-270 {
+  transform: rotate(270deg);
+}

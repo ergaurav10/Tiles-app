@@ -1,0 +1,28 @@
+<div class="bd-border-utils clearfix ">
+  <div class="pull-left">
+    <button type="button"
+      class="btn btn-default btn-sm"
+      (click)="toggleCell()">
+      a
+    </button>
+
+    <button type="button"
+      class="btn btn-default btn-sm"
+      (click)="fillRow($event)">
+      f
+    </button>
+  </div>
+
+  <span style="cursor: pointer;"
+    class="border clearfix"
+    [ngStyle]="{'width': width +'px', 'height': height +'px'}"
+    *ngFor="let col of colCount | numToArray"
+     appDisplaySelectedTile>
+      <img
+      [src]="tilesFolderPath + imageAddress"
+      alt=""
+      class="img-responsive"
+      [ngStyle]="{'max-width': widthp +'px', 'max-height': heightp +'px' }">
+    
+  </span>
+</div>

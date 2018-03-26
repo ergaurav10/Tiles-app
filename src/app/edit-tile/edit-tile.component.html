@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-xs-4">
+    <form [formGroup] = "tileForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="fileRequired" [hidden]="!fileRequired" class="alert alert-warning" role="alert">
+            Please select at least one file!
+          </div>
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled] ="!tileForm.valid">
+            {{ editMode ? 'Edit' : 'Add' }}
+          </button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">
+            Cancel
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control">
+              <input
+                type="hidden"
+                id="_id"
+                formControlName="_id"
+                class="form-control">
+              <input
+                type="hidden"
+                id="_userid"
+                formControlName="_userid"
+                class="form-control">
+              <input
+                type="hidden"
+                id="path"
+                formControlName="path"
+                class="form-control">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row" *ngIf="!editMode">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="single">Tile</label>
+            <input type="file" class="form-control" name="single" id="single" ng2FileSelect [uploader]="uploader" (click)="clearFileField($event)"/>
+          </div>
+          <div id="maxSizeWarning" [hidden]="!maxSizeWarning" class="alert alert-warning" role="alert" >
+            File size should not be less more then 300KB!
+          </div>
+          <div id="fileExtensionWarning" [hidden]="!fileExtensionWarning" class="alert alert-warning" role="alert">
+            You can only save the file as an PNG, JPG or GIF format!
+          </div>
+          <br />
+          <!-- <button type="button" class="btn btn-success btn-s"
+            (click)="onUploadFile()" [disabled]="!uploader.getNotUploadedItems().length ">
+            <span class="glyphicon glyphicon-upload"></span> Upload all
+          </button><br /> -->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="size">Size</label>
+            <select class="form-control" name="size"
+              id="size" formControlName="size">
+              <option
+                *ngFor="let tileSize of tileSizes; let i = index;"
+                [value]= "i" >{{tileSize.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="availability">Availability</label>
+            <div class="radio">
+              <label>
+                <input type="radio"
+                  name="availability"
+                  formControlName="availability"
+                  value='Yes'>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio"
+                  name="availability"
+                  formControlName="availability"
+                  value='No'>
+                No
+              </label>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              type="text"
+              id="description"
+              class="form-control"
+              formControlName="description"
+              rows="4"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="col-xs-4" *ngIf="editMode">
+    <img
+      [src]="tilesFolderPath + selectedTile.path"
+      alt="{{ selectedTile.name }}"
+      class="img-responsive"
+      style="max-height: 150px;">
+  </div>
+</div>

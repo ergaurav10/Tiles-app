@@ -1,0 +1,46 @@
+
+  <a
+    style="cursor: pointer;"
+    class="list-group-item clearfix">
+      <div
+        class="pull-left"
+        (click)="setSelectedTile('0deg')">
+        <h4 class="list-group-item-heading">{{ tile.name }}</h4>
+        <p class="list-group-item-text">{{ 'Size: ' + tile.width +' X '+ tile.height }}</p>
+        <span class="list-group-item-text">
+          <p class="pull-left">Availability:&nbsp;&nbsp; </p>
+          <p class="pull-left label-success img-circle"
+            *ngIf="tile.availability === 'Yes'"
+            style="width:15px; height:15px;"></p>
+          <p class="pull-left label-danger img-circle"
+            *ngIf="tile.availability != 'Yes'"
+            style="width:15px; height:15px;"></p>
+        </span>
+      </div>
+      <span
+        class="pull-right"
+        (click)="setSelectedTile('0deg')">
+        <img
+          [src]="tilesFolderPath + tile.path"
+          alt="{{ tile.name }}"
+          class="img-responsive"
+          style="max-height: 50px;">
+      </span>
+
+      <span class="float-none col-xs-12" style="max-height: 120px;">
+        <hr>
+        <div class="pull-right">
+          <button type="button"
+            class="btn btn-default btn-sm"
+            (click)="setTileInWall()">
+            Wall
+          </button>
+
+          <button type="button"
+            class="btn btn-default btn-sm"
+            (click)="editTile()">
+            Edit
+          </button>
+        </div>
+      </span>
+  </a>
