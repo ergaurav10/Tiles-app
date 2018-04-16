@@ -23,7 +23,8 @@ const port = process.env.PORT || '3000';
 // Added CORS -cross origin resource sharing  --fl
 app.use(function(req, res, next) { //allow cross origin requests
         res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
-        res.header("Access-Control-Allow-Origin", `http://localhost:${port}`);
+        // res.header("Access-Control-Allow-Origin", `http://localhost:${port}`);
+        res.header("Access-Control-Allow-Origin", `https://guarded-cove-17160.herokuapp.com:${port}`);
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.header("Access-Control-Allow-Credentials", true);
         next();

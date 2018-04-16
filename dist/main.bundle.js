@@ -670,7 +670,8 @@ var EditTileComponent = /** @class */ (function () {
     EditTileComponent.prototype.onUploadFile = function () {
         var _this = this;
         if (this.onUploadValidateFile()) {
-            this.uploader.setOptions({ url: 'http://localhost:3000/upload/' + this.tileForm.value.name });
+            // this.uploader.setOptions({url: 'http://localhost:3000/upload/' + this.tileForm.value.name});
+            this.uploader.setOptions({ url: 'https://guarded-cove-17160.herokuapp.com/upload/' + this.tileForm.value.name });
             this.uploader.uploadAll();
             this.uploader.response.subscribe(function (res) {
                 var res1 = JSON.parse(res);
