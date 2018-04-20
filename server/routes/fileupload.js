@@ -30,10 +30,11 @@ var storage = multer.diskStorage({ //multers disk storage settings
         upload(req,res,function(err){
             if(err){
                  res.json({error_code:1,err_desc:err});
+                 console.log(err);
                  return;
             }
              res.json({error_code:0, file_name: req.file.filename});
-
+            
         });
     });
 //  --------------------------------------------
