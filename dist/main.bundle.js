@@ -671,7 +671,9 @@ var EditTileComponent = /** @class */ (function () {
         var _this = this;
         if (this.onUploadValidateFile()) {
             // this.uploader.setOptions({url: 'http://localhost:3000/upload/' + this.tileForm.value.name});
-            this.uploader.setOptions({ url: 'https://guarded-cove-17160.herokuapp.com/upload/' + this.tileForm.value.name });
+            // this.uploader.setOptions({url: 'https://guarded-cove-17160.herokuapp.com/upload/' + this.tileForm.value.name});
+            var url_str = 'http://ec2-35-183-42-155.ca-central-1.compute.amazonaws.com:3000/upload/' + this.tileForm.value.name;
+            this.uploader.setOptions({ url: url_str });
             this.uploader.uploadAll();
             this.uploader.response.subscribe(function (res) {
                 var res1 = JSON.parse(res);
